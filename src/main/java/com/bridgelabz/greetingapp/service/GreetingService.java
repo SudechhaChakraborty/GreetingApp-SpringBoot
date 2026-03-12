@@ -23,4 +23,15 @@ public class GreetingService {
     public Greeting getGreetingById(Long id) {
         return repository.findById(id).orElse(null);
     }
+    public Greeting updateGreeting(Long id, String message) {
+
+        Greeting greeting = repository.findById(id).orElse(null);
+
+        if(greeting != null) {
+            greeting.setMessage(message);
+            return repository.save(greeting);
+        }
+
+        return null;
+    }
 }
