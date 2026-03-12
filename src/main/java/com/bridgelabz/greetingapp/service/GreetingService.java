@@ -23,6 +23,12 @@ public class GreetingService {
     public Greeting getGreetingById(Long id) {
         return repository.findById(id).orElse(null);
     }
+    public String deleteGreeting(Long id) {
+
+        repository.deleteById(id);
+
+        return "Greeting deleted successfully";
+    }
     public Greeting updateGreeting(Long id, String message) {
 
         Greeting greeting = repository.findById(id).orElse(null);
