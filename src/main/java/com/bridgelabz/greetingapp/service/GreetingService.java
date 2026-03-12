@@ -1,24 +1,22 @@
 package com.bridgelabz.greetingapp.service;
 
+import com.bridgelabz.greetingapp.model.Greeting;
+import com.bridgelabz.greetingapp.repository.GreetingRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GreetingService {
 
-    public String getGreeting(String firstName, String lastName) {
+    private final GreetingRepository repository;
 
-        if(firstName != null && lastName != null) {
-            return "Hello " + firstName + " " + lastName;
-        }
+    public GreetingService(GreetingRepository repository) {
+        this.repository = repository;
+    }
 
-        if(firstName != null) {
-            return "Hello " + firstName;
-        }
+    public Greeting saveGreeting(String message) {
 
-        if(lastName != null) {
-            return "Hello " + lastName;
-        }
+        Greeting greeting = new Greeting(message);
 
-        return "Hello World";
+        return repository.save(greeting);
     }
 }

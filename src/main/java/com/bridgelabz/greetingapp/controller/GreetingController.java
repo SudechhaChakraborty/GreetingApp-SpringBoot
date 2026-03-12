@@ -1,9 +1,8 @@
 package com.bridgelabz.greetingapp.controller;
 
+import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.service.GreetingService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
@@ -14,11 +13,9 @@ public class GreetingController {
         this.greetingService = greetingService;
     }
 
-    @GetMapping("/greeting")
-    public String greeting(
-            @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String lastName) {
+    @PostMapping("/greeting")
+    public Greeting saveGreeting(@RequestBody Greeting greeting) {
 
-        return greetingService.getGreeting(firstName, lastName);
+        return greetingService.saveGreeting(greeting.getMessage());
     }
 }
