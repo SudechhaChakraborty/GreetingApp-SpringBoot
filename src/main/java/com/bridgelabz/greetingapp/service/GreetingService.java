@@ -1,5 +1,5 @@
 package com.bridgelabz.greetingapp.service;
-
+import java.util.List;
 import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.repository.GreetingRepository;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 public class GreetingService {
 
     private final GreetingRepository repository;
-
+    public List<Greeting> getAllGreetings() {
+        return repository.findAll();
+    }
     public GreetingService(GreetingRepository repository) {
         this.repository = repository;
     }

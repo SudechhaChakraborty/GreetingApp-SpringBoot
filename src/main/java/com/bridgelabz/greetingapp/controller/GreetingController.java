@@ -1,5 +1,5 @@
 package com.bridgelabz.greetingapp.controller;
-
+import java.util.*;
 import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.service.GreetingService;
 import org.springframework.web.bind.annotation.*;
@@ -20,5 +20,9 @@ public class GreetingController {
     @GetMapping("/greeting/{id}")
     public Greeting getGreetingById(@PathVariable Long id) {
         return greetingService.getGreetingById(id);
+    }
+    @GetMapping("/greetings")
+    public List<Greeting> getAllGreetings() {
+        return greetingService.getAllGreetings();
     }
 }
