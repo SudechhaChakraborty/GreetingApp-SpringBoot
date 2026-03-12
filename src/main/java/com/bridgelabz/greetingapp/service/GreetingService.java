@@ -14,9 +14,11 @@ public class GreetingService {
     }
 
     public Greeting saveGreeting(String message) {
-
         Greeting greeting = new Greeting(message);
-
         return repository.save(greeting);
+    }
+
+    public Greeting getGreetingById(Long id) {
+        return repository.findById(id).orElse(null);
     }
 }
